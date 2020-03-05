@@ -1,5 +1,5 @@
 {
-  "npmScope": "test",
+  "npmScope": "dynatrace",
   "implicitDependencies": {
     "angular.json": "*",
     "package.json": {
@@ -17,6 +17,9 @@
     "barista-e2e": {
       "tags": [],
       "implicitDependencies": ["barista"]
+    },
+    "button": {
+      "tags": ["component"]
     }
   }
 }

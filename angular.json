@@ -119,6 +119,49 @@
           }
         }
       }
+    },
+    "button": {
+      "projectType": "library",
+      "root": "libs/barista-components/button",
+      "sourceRoot": "libs/barista-components/button/src",
+      "prefix": "dt",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:package",
+          "options": {
+            "tsConfig": "libs/barista-components/button/tsconfig.lib.json",
+            "project": "libs/barista-components/button/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/barista-components/button/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/barista-components/button/tsconfig.lib.json",
+              "libs/barista-components/button/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/barista-components/button/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/barista-components/button/jest.config.js",
+            "tsConfig": "libs/barista-components/button/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/barista-components/button/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {}
     }
   },
   "cli": {
