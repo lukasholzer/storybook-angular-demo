@@ -21,7 +21,9 @@
               "apps/barista/src/favicon.ico",
               "apps/barista/src/assets"
             ],
-            "styles": ["apps/barista/src/styles.css"],
+            "styles": [
+              "apps/barista/src/styles.css"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -79,7 +81,10 @@
               "apps/barista/tsconfig.app.json",
               "apps/barista/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/barista/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/barista/**"
+            ]
           }
         },
         "test": {
@@ -114,8 +119,13 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/barista-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/barista-e2e/**"]
+            "tsConfig": [
+              "apps/barista-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/barista-e2e/**"
+            ]
           }
         }
       }
@@ -159,9 +169,71 @@
             "passWithNoTests": true,
             "setupFile": "libs/barista-components/button/src/test-setup.ts"
           }
+        },
+        "storybook": {
+          "builder": "@nrwl/storybook:storybook",
+          "options": {
+            "uiFramework": "@storybook/angular",
+            "port": 4400,
+            "config": {
+              "configFolder": "libs/barista-components/button/.storybook"
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
+          }
+        },
+        "build-storybook": {
+          "builder": "@nrwl/storybook:build",
+          "options": {
+            "uiFramework": "@storybook/angular",
+            "outputPath": "dist/storybook/button",
+            "config": {
+              "configFolder": "libs/barista-components/button/.storybook"
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
+          }
         }
       },
       "schematics": {}
+    },
+    "button-e2e": {
+      "root": "apps/button-e2e",
+      "sourceRoot": "apps/button-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/button-e2e/cypress.json",
+            "tsConfig": "apps/button-e2e/tsconfig.e2e.json",
+            "devServerTarget": "button:storybook"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "button:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/button-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/button-e2e/**"
+            ]
+          }
+        }
+      }
     }
   },
   "cli": {

@@ -16,10 +16,20 @@
     },
     "barista-e2e": {
       "tags": [],
-      "implicitDependencies": ["barista"]
+      "implicitDependencies": [
+        "barista"
+      ]
     },
     "button": {
-      "tags": ["component"]
+      "tags": [
+        "component"
+      ]
+    },
+    "button-e2e": {
+      "tags": [],
+      "implicitDependencies": [
+        "button"
+      ]
     }
   }
 }

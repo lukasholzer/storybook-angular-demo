@@ -1,13 +1,19 @@
 import { Component, Input } from '@angular/core';
 
+export enum DtColors {
+  Red = 'red',
+  Blue = 'blue',
+  Yellow = 'yellow',
+}
+
 @Component({
   selector: 'dt-button',
-  templateUrl: './button.html',
+  template: '<ng-content></ng-content>',
   styleUrls: ['./button.scss'],
   host: {
     '[style.background-color]': 'color'
   }
 })
 export class DtButton {
-  @Input() color: 'blue' | 'red' = 'red';
+  @Input() color: DtColors = DtColors.Yellow;
 }
