@@ -1,0 +1,138 @@
+{
+  "version": 1,
+  "projects": {
+    "barista": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "apps/barista",
+      "sourceRoot": "apps/barista/src",
+      "prefix": "test",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/barista",
+            "index": "apps/barista/src/index.html",
+            "main": "apps/barista/src/main.ts",
+            "polyfills": "apps/barista/src/polyfills.ts",
+            "tsConfig": "apps/barista/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/barista/src/favicon.ico",
+              "apps/barista/src/assets"
+            ],
+            "styles": ["apps/barista/src/styles.css"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/barista/src/environments/environment.ts",
+                  "with": "apps/barista/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "barista:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "barista:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "barista:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/barista/tsconfig.app.json",
+              "apps/barista/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/barista/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/barista/jest.config.js",
+            "tsConfig": "apps/barista/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "apps/barista/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "barista-e2e": {
+      "root": "apps/barista-e2e",
+      "sourceRoot": "apps/barista-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/barista-e2e/cypress.json",
+            "tsConfig": "apps/barista-e2e/tsconfig.e2e.json",
+            "devServerTarget": "barista:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "barista:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/barista-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/barista-e2e/**"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular",
+    "analytics": "e7b3682c-3751-4aec-93ce-845c33bfeaa0"
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "barista"
+}

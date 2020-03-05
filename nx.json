@@ -1,0 +1,22 @@
+{
+  "npmScope": "test",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "barista": {
+      "tags": []
+    },
+    "barista-e2e": {
+      "tags": [],
+      "implicitDependencies": ["barista"]
+    }
+  }
+}
