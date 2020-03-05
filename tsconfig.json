@@ -18,6 +18,9 @@
     "paths": {
       "@dynatrace/barista-components/button": [
         "libs/barista-components/button/src/index.ts"
+      ],
+      "@dynatrace/barista-components/icon": [
+        "libs/barista-components/icon/src/index.ts"
       ]
     }
   },

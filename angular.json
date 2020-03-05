@@ -21,9 +21,7 @@
               "apps/barista/src/favicon.ico",
               "apps/barista/src/assets"
             ],
-            "styles": [
-              "apps/barista/src/styles.css"
-            ],
+            "styles": ["apps/barista/src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -81,10 +79,7 @@
               "apps/barista/tsconfig.app.json",
               "apps/barista/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/barista/**"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/barista/**"]
           }
         },
         "test": {
@@ -119,13 +114,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "apps/barista-e2e/tsconfig.e2e.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/barista-e2e/**"
-            ]
+            "tsConfig": ["apps/barista-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/barista-e2e/**"]
           }
         }
       }
@@ -224,16 +214,54 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "apps/button-e2e/tsconfig.e2e.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/button-e2e/**"
-            ]
+            "tsConfig": ["apps/button-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/button-e2e/**"]
           }
         }
       }
+    },
+    "barista-components-icon": {
+      "projectType": "library",
+      "root": "libs/barista-components/icon",
+      "sourceRoot": "libs/barista-components/icon/src",
+      "prefix": "dt",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:package",
+          "options": {
+            "tsConfig": "libs/barista-components/icon/tsconfig.lib.json",
+            "project": "libs/barista-components/icon/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/barista-components/icon/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/barista-components/icon/tsconfig.lib.json",
+              "libs/barista-components/icon/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/barista-components/icon/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/barista-components/icon/jest.config.js",
+            "tsConfig": "libs/barista-components/icon/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/barista-components/icon/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {}
     }
   },
   "cli": {
