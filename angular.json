@@ -220,7 +220,7 @@
         }
       }
     },
-    "barista-components-icon": {
+    "icon": {
       "projectType": "library",
       "root": "libs/barista-components/icon",
       "sourceRoot": "libs/barista-components/icon/src",

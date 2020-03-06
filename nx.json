@@ -21,12 +21,8 @@
     "button": {
       "tags": ["component"]
     },
-    "button-e2e": {
-      "tags": [],
-      "implicitDependencies": ["button"]
-    },
-    "barista-components-icon": {
-      "tags": []
+    "icon": {
+      "tags": ["component"]
     }
   }
 }
